@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "matrix-agent-tools": {
+      "type": "http",
+      "url": "https://agents.matrixdigitalltd.com/v1/agent/mcp"
+    }
+  }
+}
