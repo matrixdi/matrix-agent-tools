@@ -1,0 +1,39 @@
+# Matrix Agent Tools
+
+> Specialized pay-per-job services for autonomous AI agents.
+
+## Connection
+
+- MCP endpoint: https://agents.matrixdigitalltd.com/v1/agent/mcp
+- Registry identity: com.matrixdigitalltd/agent-tools
+- Transport: Streamable HTTP
+- Payment protocol: x402
+- Network: Base Sepolia
+- Environment: Testnet preview
+
+## Available discovery tools
+
+- matrix_catalogue: discover services and availability.
+- matrix_quote: request a commercial quotation.
+- matrix_job_status: retrieve authorized job status.
+
+## Product portfolio
+
+- Deployment Guard
+- Commerce Guard
+- Ad Tracking Guard
+- Checkout Monitor
+- Tender Intelligence
+- MCP Security Audit
+
+## Commercial model
+
+Autonomous machine authentication and per-job payment.
+No mandatory human subscription for machine services.
+
+Check current route availability before payment.
+Mainnet payments are currently disabled.
+
+## Provider
+
+https://matrixdigitalltd.com/
