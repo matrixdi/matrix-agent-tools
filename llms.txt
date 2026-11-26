@@ -37,3 +37,8 @@ Mainnet payments are currently disabled.
 ## Provider
 
 https://matrixdigitalltd.com/
+
+## Integration resources
+
+- Machine-readable service discovery: https://raw.githubusercontent.com/matrixdi/matrix-agent-tools/main/agent-discovery.json
+- Agent integration guide: https://github.com/matrixdi/matrix-agent-tools/blob/main/docs/agent-integration.md
