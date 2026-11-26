@@ -80,3 +80,11 @@ documentation, not proprietary application code.
 Matrix Digital Ltd
 
 https://matrixdigitalltd.com/
+
+## Agent integration resources
+
+- [Machine-readable service discovery](agent-discovery.json)
+- [Autonomous agent integration guide](docs/agent-integration.md)
+- [AI-readable documentation](llms.txt)
+
+These resources describe the testnet preview and quote-bound x402 workflow. Consult the live catalogue for current availability.
