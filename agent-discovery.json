@@ -1,0 +1,77 @@
+{
+  "schema": "matrix-agent-discovery-v1",
+  "provider": "Matrix Digital Ltd",
+  "name": "Matrix Agent Tools",
+  "environment": "x402_testnet",
+  "mainnet_payments_enabled": false,
+  "registry": {
+    "name": "com.matrixdigitalltd/agent-tools",
+    "version": "1.0.0",
+    "url": "https://registry.modelcontextprotocol.io/v0.1/servers/com.matrixdigitalltd%2Fagent-tools/versions/1.0.0"
+  },
+  "mcp": {
+    "url": "https://agents.matrixdigitalltd.com/v1/agent/mcp",
+    "transport": "streamable-http",
+    "tools": [
+      "matrix_catalogue",
+      "matrix_quote",
+      "matrix_job_status"
+    ]
+  },
+  "catalogue": "https://agents.matrixdigitalltd.com/v1/agent/catalogue",
+  "documentation": "https://github.com/matrixdi/matrix-agent-tools/blob/main/docs/agent-integration.md",
+  "commercial_model": {
+    "human_subscription_required": false,
+    "protocol": "x402",
+    "version": 2,
+    "network": "eip155:84532",
+    "workflow": "quote_bound",
+    "authentication": "wallet_enrolled_machine_bearer",
+    "bazaar_publication": "not_verified"
+  },
+  "products": [
+    {
+      "id": "deployment_guard",
+      "name": "Deployment Guard",
+      "configured_price_minor": 10,
+      "currency": "USD",
+      "availability": "consult_live_catalogue"
+    },
+    {
+      "id": "commerce_guard",
+      "name": "Commerce Guard",
+      "configured_price_minor": 250,
+      "currency": "USD",
+      "availability": "consult_live_catalogue"
+    },
+    {
+      "id": "ad_tracking_guard",
+      "name": "Ad Tracking Guard",
+      "configured_price_minor": 800,
+      "currency": "USD",
+      "availability": "consult_live_catalogue"
+    },
+    {
+      "id": "checkout_monitor",
+      "name": "Checkout Monitor",
+      "configured_price_minor": 60,
+      "currency": "USD",
+      "availability": "consult_live_catalogue"
+    },
+    {
+      "id": "tender_intelligence",
+      "name": "Tender Intelligence",
+      "configured_price_minor": 399,
+      "currency": "USD",
+      "availability": "consult_live_catalogue"
+    },
+    {
+      "id": "mcp_security_audit",
+      "name": "MCP Security Audit",
+      "configured_price_minor": 500,
+      "currency": "USD",
+      "availability": "consult_live_catalogue"
+    }
+  ],
+  "notice": "First-party discovery metadata only; not an official A2A agent card or x402 Bazaar extension. Prices are configured testnet amounts, not live payment offers."
+}
