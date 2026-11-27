@@ -1,49 +1,93 @@
-# Matrix Agent Tools — integration for autonomous agents
+# Matrix Agent Tools - Autonomous Agent Integration
 
-**Status:** Testnet preview. Base Sepolia (eip155:84532). Mainnet payments are disabled. Not all product routes are available yet.
+## Commercial environment
 
-## Discover services
+Matrix Agent Tools provides a limited Base Mainnet commercial release using USDC (eip155:8453).
 
-Remote MCP endpoint: `https://agents.matrixdigitalltd.com/v1/agent/mcp`
+Five offline analysis products are released, subject to current pricing and admission availability. Deployment Guard and protected live network operations remain held.
 
-Transport: Streamable HTTP. Use an MCP client to initialize a connection and discover the current tools with `tools/list`. The service exposes `matrix_catalogue`, `matrix_quote` and `matrix_job_status`. Inspect the returned tool input schemas rather than assuming arguments.
+## Discover
 
-For machine-readable service availability, use `matrix_catalogue` or:
+Remote MCP endpoint:
 
-```sh
-curl -fsS --max-time 30 https://agents.matrixdigitalltd.com/v1/agent/catalogue
-```
+https://agents.matrixdigitalltd.com/v1/agent/mcp
 
-The catalogue is authoritative for supported routes, enrollment requirements, pricing and network. The [portfolio manifest](../agent-discovery.json) is a discovery aid, not a payment offer.
+Transport: Streamable HTTP.
 
-## Authenticate and request a quotation
+Initialize the MCP connection and discover current tools using tools/list. Inspect the actual tool input schemas.
 
-Follow the enrollment instructions in the live catalogue for wallet-enrolled machine authentication. Keep the bearer token and wallet credentials in the agent's secure credential store. No human subscription is required for machine jobs.
+Live catalogue:
 
-For an enrolled agent, the HTTP quote contract is:
+https://agents.matrixdigitalltd.com/v1/agent/catalog
 
-```http
-POST /v1/agent/quotes
-Authorization: Bearer <machine-token>
-Content-Type: application/json
-```
+Buyer manifest:
 
-The JSON body contains `route`, `payload` (according to the supported route's schema), and `idempotency_key` (a unique persistent key for that logical job). Persist the key before sending the request; a lost response must not create a second chargeable job.
+https://agents.matrixdigitalltd.com/v1/agent/buyer-client.json
 
-Use the returned quotation's payment and status URLs. Verify they point to the expected HTTPS service origin, and validate the product, amount, expiry and currency.
+The live catalogue is authoritative for supported routes, pricing and availability.
 
-## Pay only for an authorized quotation
+## Authenticate and quote
 
-The current flow is quote-bound x402 v2. A POST to the returned payment URL with an empty JSON object and no payment signature can return HTTP 402 with the base64-encoded `PAYMENT-REQUIRED` header.
+Follow the wallet-enrollment instructions in the current buyer manifest and catalogue.
 
-An x402-compatible payer should validate the challenge against its own spending policy, expected network, asset, merchant, amount and resource URL. Use the official SDK to sign; retain the exact authorization and durable submission record. The signed request uses the `PAYMENT-SIGNATURE` header. Never send a private key to the service.
+Machine jobs do not require a human subscription.
 
-On uncertain delivery or an HTTP 202 response, reconcile the existing quotation through its authorized status URL. Do not blindly create another quote or sign another payment. Read the final status and result; the finalized response may include `PAYMENT-RESPONSE`.
+An enrolled agent can request a quotation using:
 
-External network operations require the applicable verified target grant. Do not pay for an unavailable or held route.
+    POST /v1/agent/quotes
+    Authorization: Bearer <machine-token>
+    Content-Type: application/json
 
-## Product portfolio
+Supply the documented route, payload and a persistent idempotency_key.
 
-See the [README](../README.md) for the six products and configured prices. Consult the live catalogue before purchase. The official MCP Registry record is [here](https://registry.modelcontextprotocol.io/v0.1/servers/com.matrixdigitalltd%2Fagent-tools/versions/1.0.0).
+Keep machine credentials and wallet private keys in a secure local credential store. Never transmit a private key to the service.
 
-This guide describes the Matrix-specific quotation workflow. It does not claim generic one-request x402 Bazaar compatibility, marketplace acceptance, or mainnet availability.
+Validate quotation ownership, product, payload, amount, currency, expiry and payment resource against the agent's authorized spending policy.
+
+## Default payment protocol
+
+The default is the server-reserved nonce workflow.
+
+Use the supported buyer client and validate the complete HTTP 402 payment requirements before signing.
+
+Persist the exact authorization and idempotency key. Submit Payment-Signature using the documented request contract.
+
+## Optional buyer v1.2.0
+
+Download:
+
+https://agents.matrixdigitalltd.com/clients/matrix-agent-tools/1.2.0/matrix-agent-tools-buyer-1.2.0.zip
+
+Documentation:
+
+https://agents.matrixdigitalltd.com/clients/matrix-agent-tools/1.2.0/QUOTE-PROOF.md
+
+The optional standard_quote_proof_v1 mode requires the following:
+
+1. Obtain an authenticated extended-mode quotation.
+2. Validate and sign the payment locally.
+3. Durably persist the signed payment envelope.
+4. Register the signed quotation commitment without transmitting Payment-Signature.
+5. Require the documented successful commitment-registration response.
+6. Transmit the exact original payment authorization.
+7. Recover payment and execution status.
+
+Do not regenerate the authorization, nonce or idempotency key to recover uncertain delivery.
+
+## Settlement and execution recovery
+
+An HTTP 202 response indicates that processing or reconciliation may remain pending.
+
+Use the authenticated status URL associated with the original quotation. A pending response does not authorize a second payment.
+
+Final payment verification and job completion are separate states.
+
+## Limitations
+
+The optional extension requires Matrix-specific integration. Unmodified generic x402 compatibility and third-party Bazaar acceptance are not claimed.
+
+Extended-mode live settlement remains uncertified.
+
+Always consult the live catalogue before making a purchase.
+
+No protected live network route should be treated as commercially available until explicitly released.

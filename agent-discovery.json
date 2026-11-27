@@ -2,8 +2,9 @@
   "schema": "matrix-agent-discovery-v1",
   "provider": "Matrix Digital Ltd",
   "name": "Matrix Agent Tools",
-  "environment": "x402_testnet",
-  "mainnet_payments_enabled": false,
+  "environment": "x402_mainnet",
+  "mainnet_payments_enabled": true,
+  "availability": "limited_commercial_release",
   "registry": {
     "name": "com.matrixdigitalltd/agent-tools",
     "version": "1.0.0",
@@ -18,60 +19,73 @@
       "matrix_job_status"
     ]
   },
-  "catalogue": "https://agents.matrixdigitalltd.com/v1/agent/catalogue",
+  "catalogue": "https://agents.matrixdigitalltd.com/v1/agent/catalog",
+  "buyer_manifest": "https://agents.matrixdigitalltd.com/v1/agent/buyer-client.json",
   "documentation": "https://github.com/matrixdi/matrix-agent-tools/blob/main/docs/agent-integration.md",
   "commercial_model": {
     "human_subscription_required": false,
     "protocol": "x402",
     "version": 2,
-    "network": "eip155:84532",
+    "network": "eip155:8453",
+    "asset": "USDC",
     "workflow": "quote_bound",
     "authentication": "wallet_enrolled_machine_bearer",
+    "default_payment_mode": "server_reserved_nonce",
+    "optional_payment_mode": "standard_quote_proof_v1",
+    "generic_unmodified_x402_compatible": false,
+    "extended_mode_live_settlement_certified": false,
     "bazaar_publication": "not_verified"
+  },
+  "buyer_extension": {
+    "version": "1.2.0",
+    "optional": true,
+    "package_url": "https://agents.matrixdigitalltd.com/clients/matrix-agent-tools/1.2.0/matrix-agent-tools-buyer-1.2.0.zip",
+    "package_sha256": "7b7648fc478e22ebf561bda01ff5280165febce72737a6580851c9e39616937e",
+    "documentation_url": "https://agents.matrixdigitalltd.com/clients/matrix-agent-tools/1.2.0/QUOTE-PROOF.md",
+    "nonce_preregistration_required": true,
+    "additional_wallet_proof_required": true
   },
   "products": [
     {
-      "id": "deployment_guard",
-      "name": "Deployment Guard",
-      "configured_price_minor": 10,
-      "currency": "USD",
-      "availability": "consult_live_catalogue"
+      "id": "checkout_monitor",
+      "name": "Checkout Monitor",
+      "availability": "consult_live_catalogue",
+      "execution_mode": "offline_analysis",
+      "marketplace_endpoint": "https://agents.matrixdigitalltd.com/v1/marketplace/checkout_monitor"
     },
     {
       "id": "commerce_guard",
       "name": "Commerce Guard",
-      "configured_price_minor": 250,
-      "currency": "USD",
-      "availability": "consult_live_catalogue"
+      "availability": "consult_live_catalogue",
+      "execution_mode": "offline_analysis",
+      "marketplace_endpoint": "https://agents.matrixdigitalltd.com/v1/marketplace/commerce_guard"
     },
     {
       "id": "ad_tracking_guard",
       "name": "Ad Tracking Guard",
-      "configured_price_minor": 800,
-      "currency": "USD",
-      "availability": "consult_live_catalogue"
-    },
-    {
-      "id": "checkout_monitor",
-      "name": "Checkout Monitor",
-      "configured_price_minor": 60,
-      "currency": "USD",
-      "availability": "consult_live_catalogue"
+      "availability": "consult_live_catalogue",
+      "execution_mode": "offline_analysis",
+      "marketplace_endpoint": "https://agents.matrixdigitalltd.com/v1/marketplace/ad_tracking_guard"
     },
     {
       "id": "tender_intelligence",
       "name": "Tender Intelligence",
-      "configured_price_minor": 399,
-      "currency": "USD",
-      "availability": "consult_live_catalogue"
+      "availability": "consult_live_catalogue",
+      "execution_mode": "offline_analysis",
+      "marketplace_endpoint": "https://agents.matrixdigitalltd.com/v1/marketplace/tender_intelligence"
     },
     {
       "id": "mcp_security_audit",
       "name": "MCP Security Audit",
-      "configured_price_minor": 500,
-      "currency": "USD",
-      "availability": "consult_live_catalogue"
+      "availability": "consult_live_catalogue",
+      "execution_mode": "offline_analysis",
+      "marketplace_endpoint": "https://agents.matrixdigitalltd.com/v1/marketplace/mcp_security_audit"
+    },
+    {
+      "id": "deployment_guard",
+      "name": "Deployment Guard",
+      "availability": "not_released"
     }
   ],
-  "notice": "First-party discovery metadata only; not an official A2A agent card or x402 Bazaar extension. Prices are configured testnet amounts, not live payment offers."
+  "notice": "First-party discovery metadata, not an official A2A agent card or verified Bazaar listing. Consult the live catalogue for pricing and admission availability. Protected live network operations remain held."
 }

@@ -1,44 +1,50 @@
 # Matrix Agent Tools
 
-> Specialized pay-per-job services for autonomous AI agents.
+> Specialist pay-per-job services for autonomous AI agents.
 
 ## Connection
 
-- MCP endpoint: https://agents.matrixdigitalltd.com/v1/agent/mcp
-- Registry identity: com.matrixdigitalltd/agent-tools
+- MCP: https://agents.matrixdigitalltd.com/v1/agent/mcp
 - Transport: Streamable HTTP
-- Payment protocol: x402
-- Network: Base Sepolia
-- Environment: Testnet preview
+- Registry: com.matrixdigitalltd/agent-tools
+- Network: Base Mainnet (eip155:8453)
+- Settlement asset: USDC
+- Payment protocol: quotation-bound x402 v2
+- Human subscription required: No
 
-## Available discovery tools
+## Released marketplace products
 
-- matrix_catalogue: discover services and availability.
-- matrix_quote: request a commercial quotation.
-- matrix_job_status: retrieve authorized job status.
+- https://agents.matrixdigitalltd.com/v1/marketplace/checkout_monitor
+- https://agents.matrixdigitalltd.com/v1/marketplace/commerce_guard
+- https://agents.matrixdigitalltd.com/v1/marketplace/ad_tracking_guard
+- https://agents.matrixdigitalltd.com/v1/marketplace/tender_intelligence
+- https://agents.matrixdigitalltd.com/v1/marketplace/mcp_security_audit
 
-## Product portfolio
+These products support offline analysis. Deployment Guard and protected live network operations remain held.
 
-- Deployment Guard
-- Commerce Guard
-- Ad Tracking Guard
-- Checkout Monitor
-- Tender Intelligence
-- MCP Security Audit
+## Integration resources
 
-## Commercial model
+- Live catalogue: https://agents.matrixdigitalltd.com/v1/agent/catalog
+- Buyer manifest: https://agents.matrixdigitalltd.com/v1/agent/buyer-client.json
+- Buyer v1.2.0: https://agents.matrixdigitalltd.com/clients/matrix-agent-tools/1.2.0/matrix-agent-tools-buyer-1.2.0.zip
+- Payment documentation: https://agents.matrixdigitalltd.com/clients/matrix-agent-tools/1.2.0/QUOTE-PROOF.md
+- Discovery: https://raw.githubusercontent.com/matrixdi/matrix-agent-tools/main/agent-discovery.json
+- Integration guide: https://github.com/matrixdi/matrix-agent-tools/blob/main/docs/agent-integration.md
 
-Autonomous machine authentication and per-job payment.
-No mandatory human subscription for machine services.
+## Payment
 
-Check current route availability before payment.
-Mainnet payments are currently disabled.
+Wallet enrollment and authenticated quotations are required.
+
+The default payment mode is server_reserved_nonce.
+
+Optional mode standard_quote_proof_v1 requires a signed quotation commitment and nonce pre-registration before transmitting Payment-Signature.
+
+Consult the live catalogue for actual prices and current admission availability.
+
+Do not regenerate payment authorizations after uncertain delivery. Recover the original payment and job status.
+
+Unmodified generic x402 compatibility is not claimed. Extended-mode live settlement remains uncertified.
 
 ## Provider
 
 https://matrixdigitalltd.com/
-
-## Integration resources
-
-- Machine-readable service discovery: https://raw.githubusercontent.com/matrixdi/matrix-agent-tools/main/agent-discovery.json
-- Agent integration guide: https://github.com/matrixdi/matrix-agent-tools/blob/main/docs/agent-integration.md

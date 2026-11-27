@@ -1,90 +1,77 @@
 # Matrix Agent Tools
 
-> Professional services built for autonomous AI agents.
+> Professional pay-per-job services built for autonomous AI agents.
 
-Matrix Agent Tools by Matrix Digital Ltd enables
-AI agents to discover specialist services, request
-quotations, authenticate, pay per job and receive
-structured results.
+Matrix Agent Tools by Matrix Digital Ltd enables AI agents to discover specialist services, authenticate, obtain quotations, pay per job and receive structured execution results.
+
+## Commercial availability
+
+Five offline analysis products are released on Base Mainnet, subject to current pricing, admission availability and payment safeguards.
+
+- Network: Base Mainnet (eip155:8453)
+- Settlement asset: USDC
+- Payment protocol: x402 v2 with Matrix quotation binding
+- Human subscription required: No
+
+## Service portfolio
+
+| Product | Commercial status |
+|---|---|
+| Checkout Monitor | Released - offline analysis |
+| Commerce Guard | Released - offline analysis |
+| Ad Tracking Guard | Released - offline analysis |
+| Tender Intelligence | Released - offline analysis |
+| MCP Security Audit | Released - offline analysis |
+| Deployment Guard | Held pending network certification |
+
+Protected live network operations remain held.
+
+Consult the live catalogue for current prices and availability. Portfolio descriptions are not payment offers.
 
 ## Connect via MCP
 
-**Remote MCP endpoint**
-
+Remote endpoint:
 https://agents.matrixdigitalltd.com/v1/agent/mcp
 
 - Transport: Streamable HTTP
-- Registry: com.matrixdigitalltd/agent-tools
-- Version: 1.0.0
-- Commercial model: Pay per job
-- Payment protocol: x402
-- Human subscription required for machine jobs: No
+- Registry identity: com.matrixdigitalltd/agent-tools
+- Registry version: 1.0.0
+
+Discoverable tools include matrix_catalogue, matrix_quote and matrix_job_status.
+
+Inspect the current tool schemas before invoking them.
 
 [Official MCP Registry](https://registry.modelcontextprotocol.io/v0.1/servers/com.matrixdigitalltd%2Fagent-tools/versions/1.0.0)
 
-## Six specialized agent services
+## Autonomous buyer integration
 
-| Product | Purpose | Configured price |
-|---|---|---:|
-| Deployment Guard | Website deployment and availability verification | $0.10 |
-| Commerce Guard | E-commerce and product-feed auditing | $2.50 |
-| Ad Tracking Guard | Advertising and tracking analysis | $8.00 |
-| Checkout Monitor | Checkout journey analysis | $0.60 |
-| Tender Intelligence | Procurement and tender analysis | $3.99 |
-| MCP Security Audit | MCP configuration and security analysis | $5.00 |
+1. Discover services and pricing.
+2. Complete wallet-enrolled machine authentication.
+3. Request a quotation.
+4. Validate the payment terms against the agent's spending policy.
+5. Pay using the supported quotation-bound protocol.
+6. Recover payment status and authorized execution results.
 
-## Discoverable MCP tools
+## Buyer resources
 
-- matrix_catalogue
-- matrix_quote
-- matrix_job_status
+- [Live catalogue](https://agents.matrixdigitalltd.com/v1/agent/catalog)
+- [Buyer manifest](https://agents.matrixdigitalltd.com/v1/agent/buyer-client.json)
+- [Optional buyer v1.2.0](https://agents.matrixdigitalltd.com/clients/matrix-agent-tools/1.2.0/matrix-agent-tools-buyer-1.2.0.zip)
+- [Extended payment documentation](https://agents.matrixdigitalltd.com/clients/matrix-agent-tools/1.2.0/QUOTE-PROOF.md)
+- [Machine-readable discovery](agent-discovery.json)
+- [Integration guide](docs/agent-integration.md)
+- [AI-readable documentation](llms.txt)
 
-## Autonomous integration
+The existing server-reserved nonce workflow remains the default.
 
-1. Connect to the remote MCP endpoint.
-2. Discover available services through matrix_catalogue.
-3. Complete machine authentication.
-4. Request a quotation.
-5. Complete payment using the supported x402 protocol.
-6. Retrieve authorized execution status and results.
+The optional standard_quote_proof_v1 mode requires additional signed quotation proof and nonce pre-registration.
 
-## Designed for
+Unmodified generic x402 compatibility is not claimed. Actual extended-mode Mainnet settlement remains uncertified.
 
-- Autonomous AI agents
-- Coding and deployment agents
-- E-commerce automation
-- Digital marketing agents
-- Procurement automation
-- AI security platforms
-- Agentic commerce applications
-
-## Current availability
-
-Matrix Agent Tools is currently a testnet preview.
-
-Payment network: Base Sepolia (eip155:84532).
-
-Mainnet payments are disabled. Configured prices
-refer to testnet job amounts.
-
-Always consult the current service catalogue before
-requesting a quotation. Individual products and
-routes are subject to commercial and security
-certification.
-
-This repository contains public integration
-documentation, not proprietary application code.
+This repository contains public documentation, not proprietary application source code.
 
 ## Provider
 
 Matrix Digital Ltd
 
 https://matrixdigitalltd.com/
-
-## Agent integration resources
-
-- [Machine-readable service discovery](agent-discovery.json)
-- [Autonomous agent integration guide](docs/agent-integration.md)
-- [AI-readable documentation](llms.txt)
-
-These resources describe the testnet preview and quote-bound x402 workflow. Consult the live catalogue for current availability.
